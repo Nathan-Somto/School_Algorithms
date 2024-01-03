@@ -17,6 +17,9 @@ size.addEventListener("change", (e) => {
   if(manuallyTyped.length !== +e.target.value){
     startBtn.classList.add('hidden');
   }
+  else {
+    startBtn.classList.remove('hidden')
+  }
 
 });
 window.onload = () => {
@@ -271,6 +274,8 @@ function createResetBtn(){
             manuallyTyped.length = 0;
             generateRand.disabled = false;
             typeManually.disabled = false;
+            ul.innerHTML = '';
+            ul.appendChild(tagInput);
             let firstChild = visualContainer.firstChild;
             while(firstChild){
                 visualContainer.removeChild(firstChild);

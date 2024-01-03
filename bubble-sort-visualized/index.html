@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort Visualized</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Bubble Sort Visualized</h1>
+        <div class="info-box">
+            <h2>Some Background Info</h2>
+            <div>
+                <p>Time Complexity: <span>O(n<sup>2</sup>)</span></p>
+                <p>Space Complexity: <span>O(1)</span></p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <form>
+            <div class ="form-top">
+
+                <div>
+                    <label for="size">Input Size</label>
+                    <input type="range" min="1" max="10" value="5" id="size">
+                    <span id="size-number"></span>
+                </div>
+                <div class="form-btn-container">
+                    <button id="type-manual" type="button">Type Manually</button>
+                    <button id="generate-rand" type="button">Generate Random</button>
+                </div>
+            </div>
+            <div id="manual-box" class="hidden">
+                <label>Enter numbers: seperated by a space</label>
+                <div class="tag-area">
+                    <ul>
+                        <input type="text" class="tag-input" id="tag-input" />
+                    </ul>
+                </div>
+            </div>
+            <button id="start-btn" type="button" class="next-button hidden">Start Sorting</button>
+        </form>
+        <section id="visual-container">
+        </section>
+    </main>
+</body>
+</html>

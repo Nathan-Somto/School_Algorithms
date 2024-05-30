@@ -1,5 +1,7 @@
 import math
 import random
+import argparse
+import os
 def gcd(a,b):
     if a % b == 0:
         return b
@@ -42,19 +44,17 @@ def rsa_key_pair():
     e = get_e(phi)
     d = x_gcd(e, phi)
     return ((e, n), (d, n))
+def read_key(key_file):
+    with open(key_file, 'r') as kf:
+        key = tuple(map(int, kf.read().split(',')))
+    return key
 
+def write_key(key, key_file):
+    with open(key_file, 'w') as kf:
+        kf.write(','.join(map(str, key)))
 def rsa_encrypt(plain_text, public_key):
     e, n = public_key
     return [pow(ord(char), e, n) for char in plain_text]
 def rsa_decrypt(ciphertext, private_key):
     d, n = private_key
     return ''.join(chr(pow(char, d, n)) for char in ciphertext)
-if __name__ == "__main__":
-   plain_text = "Biscuit"
-   public_key, private_key = rsa_key_pair()
-   print("public_key: ", public_key)
-   print("private key:", private_key)
-   cipher_text = rsa_encrypt(plain_text, public_key)
-   print("cipher text: ", cipher_text)
-   print("plain text: ", rsa_decrypt(cipher_text,private_key))
-

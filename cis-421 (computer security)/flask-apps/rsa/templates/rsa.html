@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSA Cipher</title>
+</head>
+<body>
+    <h1>RSA Cipher</h1>
+    <form method="post">
+        <button type="submit" name="generate_keys">Generate Keys</button>
+    </form>
+    {% if public_key and private_key %}
+        <h2>Generated Keys:</h2>
+        <p>Public Key: {{ public_key }}</p>
+        <p>Private Key: {{ private_key }}</p>
+    {% endif %}
+    <form method="post">
+        <label for="text">Text:</label>
+        <input type="text" id="text" name="text" value="{{ text if text else '' }}" required><br><br>
+        <label for="public_key">Public Key:</label>
+        <input type="text" id="public_key" name="public_key" value="{{ public_key if public_key else '' }}" required><br><br>
+        <label for="private_key">Private Key:</label>
+        <input type="text" id="private_key" name="private_key" value="{{ private_key if private_key else '' }}" required><br><br>
+        <label for="operation">Operation:</label>
+        <select id="operation" name="operation">
+            <option value="encrypt" {% if operation == 'encrypt' %}selected{% endif %}>Encrypt</option>
+            <option value="decrypt" {% if operation == 'decrypt' %}selected{% endif %}>Decrypt</option>
+        </select><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    {% if result_text %}
+        <h2>Result:</h2>
+        <p>{{ result_text }}</p>
+    {% endif %}
+</body>
+</html>
+
